@@ -26,7 +26,7 @@ export class AccessoireService {
 
   //avor un accessoi celon son id
   getAccessoire(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+   return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   //delete one accessoire celon son id

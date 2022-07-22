@@ -1,14 +1,14 @@
 {
-  "name": "angular8-jwt-auth",
+  "name": "caref-front",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "http-server-spa dist/caref-front index.html $PORT",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa"
   },
   "private": true,
   "dependencies": {
