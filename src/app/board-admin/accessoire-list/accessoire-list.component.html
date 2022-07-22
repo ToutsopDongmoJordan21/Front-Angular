@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2><i><u>Garage List</u></i></h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Garage Id</th>
+            <th>Garage Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let accessoire of accessoire | async">
+                <td>{{accessoire.id}}</td>
+                <td>{{accessoire.accessoireName}}</td>
+                <td><button (click)="deleteAccessoire(accessoire.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="updateAccessoire(accessoire.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                    <button (click)="createAccessoire()" class="btn btn-secondary" style="margin-left: 10px;"> Create</button>
+                    <button (click)="accessoireDetails(accessoire.id)" class="btn btn-info" style="margin-left: 10px;">Details</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

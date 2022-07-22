@@ -1,0 +1,74 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+  </ngx-spinner>
+  <div class="app flex-row align-items-center">
+    <div class="container-fluid" *ngIf="currentUser">
+      <div class="row" >
+        <div class="col-md-9 mx-auto">
+          <div class="card">
+            <div class="col-md-12">
+              <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'PAYMENT FORM'}}</u></i></h1>
+              <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'PAYMENT FORM'}}</h2>
+            </div>
+            <div class="card-body" *ngIf="car">
+              <form ngNoForm action="https://test.payu.in/_payment" name="payuform" method="POST" target="payment_popup"  onsubmit="window.open('about:blank','payment_popup','width=900,height=500');">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="firstname">{{'Username'}}</label>
+                    <input type="text" class="form-control" 
+                     id="firstname" name="firstname" 
+                     [(ngModel)]="currentUser.username">
+                  </div> 
+                  <div class="form-group col-md-6">
+                    <label for="email">{{'Address Email'}}</label>
+                    <input type="email" class="form-control" 
+                     id="email" name="email" 
+                     [(ngModel)]="currentUser.email">    
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="email">{{'PhoneNumber'}}:</label>
+                    <input type="number" class="form-control" 
+                     id="phone" name="phone" 
+                     [(ngModel)]="currentUser.phoneNumber">     
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="productInfo">Product Name:</label>
+                    <input type="text" class="form-control" 
+                     id="productInfo" name="productinfo" 
+                     [(ngModel)]="car.carTitle">     
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-12">
+                    <label for="amount">Amount:</label>
+                    <input type="number" class="form-control" 
+                     id="amount" name="amount" 
+                     [(ngModel)]="car.carLoanPrice" disabled>    
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <button type="submit" 
+                     class="btn btn-round bg-dark text-white" (click)="goback()">Return</button>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <textarea name="surl" id="surl" ng-model="surl" rows="2" cols="2" hidden [(ngModel)]="payuform.surl"></textarea>
+                    <textarea name="furl" id="furl" ng-model="furl" rows="2" cols="2" hidden [(ngModel)]="payuform.furl"></textarea>
+                    <textarea name="key" id="key" ng-model="key" rows="2" cols="2" hidden [(ngModel)]="payuform.key"></textarea>
+                    <textarea name="hash" id="hash" ng-model="hash" rows="2" cols="2" hidden [(ngModel)]="payuform.hash"></textarea>
+                    <textarea name="txnid" id="txnid" ng-model="txnid" rows="2" cols="2" hidden [(ngModel)]="payuform.txnid"></textarea>
+                    <textarea name="service_provider" id="service_provider" rows="2" cols="2" hidden></textarea>
+                    <button *ngIf="disablePaymentButton" type="button"  class="btn btn-secondary" (click)="confirmPayment()">Confirm</button>
+                    <button *ngIf="!disablePaymentButton" type="submit" class="btn btn-info">Submit</button>   
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,67 @@
+
+  <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+      <a href="#">
+          <img src="../assets/images/2.png" alt="image" />
+      </a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home"><b>Home </b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin"><b>Admin Board</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="mod"><b>Moderator Board</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user"><b>User</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/garage" class="nav-link" *ngIf="isLoggedIn" routerLink="garage"><b>Garage</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/report" class="nav-link" *ngIf="isLoggedIn" routerLink="report"><b>Report</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="/cars" class="nav-link" *ngIf="isLoggedIn" routerLink="cars"><b>Cars</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/subscription" class="nav-link" *ngIf="isLoggedIn" routerLink="subscription"><b>Subscription</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/accessoire" class="nav-link" *ngIf="isLoggedIn" routerLink="accessoire"><b>Accessoire</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/payments" class="nav-link" *ngIf="isLoggedIn" routerLink="payments"><b>Payments</b></a>
+      </li>
+      <li class="nav-item" *ngIf="showUserBoard">
+        <a href="/car" class="nav-link" *ngIf="isLoggedIn" routerLink="car"><b>Post Car</b></a>
+      </li>
+      <!--<li class="nav-item" *ngIf="showUserBoard">
+        <a href="/payment" class="nav-link" *ngIf="isLoggedIn" routerLink="payment"><b>payment</b></a>
+      </li> -->
+      
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register"><b>Sign Up</b></a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login"><b>Login</b></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+  <div class= "container-fluid">
+      <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>

@@ -1,0 +1,104 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="card">
+          <div class="col-md-12">
+            <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'CREATE GARAGE'}}</u></i></h1>
+            <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'CREATE GARAGE'}}</h2>
+          </div>
+          <div class="card-body">
+            <form class="form" [(formGroup)]="postGarageForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">{{'Garage Name'}}</label>
+                  <input type="text" class="form-control" 
+                  formControlName="garageName"
+                  id="name"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter the garage name">
+                  <div *ngIf="garageName.invalid && (garageName.dirty || garageName.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="garageName.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                    <div *ngIf="garageName.errors.maxlength">
+                      {{'The car title max length is 50 characters'}}
+                    </div>
+                    <div *ngIf="garageName.errors.minlength">
+                      {{'The car title min length is 5 characters'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="address">{{'Garage Addresse'}}</label>
+                  <input type="text" class="form-control" 
+                  formControlName="garageAddress"
+                  id="address"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter the garage Address">
+                  <div *ngIf="garageAddress.invalid && (garageAddress.dirty || garageAddress.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="garageAddress.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                    <div *ngIf="garageAddress.errors.maxlength">
+                      {{'The car title max length is 50 characters'}}
+                    </div>
+                    <div *ngIf="garageAddress.errors.minlength">
+                      {{'The car title min length is 5 characters'}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mt-2">
+                    <label for="uploardFile"> {{'Garage images'}}</label>
+                    <input id="uploadFile" formControlName="images"
+                    [accept]="[acceptImageInputFile]" 
+                    (change)="onFileSelect($event)" 
+                    class="form-control border-color" 
+                    style="position:relative; opacity: 1;" 
+                    type="file" name="..." multiple max="5" />
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let url of listDomUrl">
+                      <img class="d-block select-image" [srcset]="[url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="removeFile(url)">{{ 'Remove' }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex col-md-12 " *ngIf="listOldFile.length>0">
+                  <hr style="width: 40%"> <span>Old Image</span> <hr style="width: 40%">
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let file of listOldFile">
+                      <img class="d-block select-image" [srcset]="[file.url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="onRemoveOldFile(file)">{{'Remove'}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<img src="http://localhost:8080/api/file/download/CAREF_MEDIA_USER_1_1611441751090.png">-->
+              <div class="d-flex justify-content-between mt-2">
+                <div class="d-flex justify-content-start">
+                  <a type="button" (click)="onBackClicked()" class="btn btn-round bg-secondary text-white">{{'Cancel post garage'}}</a>
+                </div>
+                <div>
+                  <button type="submit" [disabled]="postGarageForm.invalid" class="btn btn-round bg-info text-white">{{'Submit Post garage'}}</button>
+                </div>
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

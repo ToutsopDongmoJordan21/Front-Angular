@@ -1,0 +1,162 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="card">
+          <div class="col-md-12">
+            <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block">{{'POST A CAR'}}</h1>
+            <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'POST A CAR'}}</h2>
+          </div>
+          <!-- First Step -->
+          <div class="card-body">
+            <form class="form" [formGroup]="postCarForm" (ngSubmit)="onSubmit()" >
+              <div class="row">
+                <div class="form-group  col-md-4">
+                  <label for="title">{{'Car title'}}</label>
+                  <input type="text" class="form-control" 
+                  formControlName="carTitle" 
+                  id="title" 
+                  aria-describedby="emailHelp" 
+                  placeholder="Short title for your car...">
+                  <div *ngIf="carTitle.invalid && (carTitle.dirty || carTitle.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="carTitle.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                    <div *ngIf="carTitle.errors.maxlength">
+                      {{'The car title max length is 50 characters'}}
+                    </div>
+                    <div *ngIf="carTitle.errors.minlength">
+                      {{'The car title min length is 5 characters'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="brand">{{'Car brand'}}</label>
+                  <input type="text" class="form-control" formControlName="carBrand" id="brand" aria-describedby="emailHelp" placeholder="your car brand here...">
+                  <div *ngIf="carBrand.invalid && (carBrand.dirty || carBrand.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="carBrand.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                    <div *ngIf="carBrand.errors.maxlength">
+                      {{'The car title max length is 20 characters'}}
+                    </div>
+                    <div *ngIf="carBrand.errors.minlength">
+                      {{'The car title min length is 5 characters'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group  col-md-4">
+                  <label for="yearModel">{{'Car year model'}}</label>
+                  <input type="text" class="form-control" formControlName="carYearModel" id="yearModel" aria-describedby="emailHelp" placeholder="car year model here...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group  col-md-4">
+                  <label for="carPrice">{{'Car price (FCFA)'}}</label>
+                  <input type="number" class="form-control" formControlName="carPrice" id="carPrice" aria-describedby="emailHelp" placeholder="The price of your car here (FCFA)...">
+                  <div *ngIf="carPrice.invalid && (carPrice.dirty || carPrice.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="carPrice.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group  col-md-4">
+                  <label for="carLoanPrice">{{'Car loan price (FCFA)'}}</label>
+                  <input type="number" class="form-control" formControlName="carLoanPrice" id="carLoanPrice" aria-describedby="emailHelp" placeholder="The loan price of your car here (FCFA)...">
+                  <div *ngIf="carLoanPrice.invalid && (carLoanPrice.dirty || carLoanPrice.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="carLoanPrice.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group  col-md-4">
+                  <label for="carFuel">{{'Car fuel'}}</label>
+                  <input type="text" class="form-control" formControlName="carFuel" id="carFuel" aria-describedby="emailHelp" placeholder="The car fuel here...">
+                  <div *ngIf="carFuel.invalid && (carFuel.dirty || carFuel.touched)" class="text-danger text_bold mt-2">
+                    <div *ngIf="carFuel.errors.required">
+                      {{'This information is required'}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group  col-md-6">
+                  <label for="accessors">{{'Car accessors'}}</label>
+                  <ng-multiselect-dropdown
+                    id="accessors"
+                    [placeholder]="'Select car accessors'"
+                    [data]="accessors"
+                    [(ngModel)]="selectedItems"
+                    [settings]="dropdownSettings"
+                    [ngModelOptions]="{standalone: true}">
+                  </ng-multiselect-dropdown>
+
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="carSeating">{{'Car seating'}}</label>
+                  <input type="number" class="form-control" formControlName="carSeating" id="carSeating" aria-describedby="emailHelp" placeholder="your car seating here...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="description">{{'Car overview'}}</label>
+                  <textarea class="form-control" formControlName="carOverview" id="description" rows="3" placeholder="car overview, details..."></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mt-2">
+                    <label for="uploardFile">{{ 'Car images' }}</label>
+                    <input id="uploardFile" formControlName="images" 
+                    [accept]="[acceptImageInputFile]" 
+                    (change)="onFileSelect($event)" 
+                    class="form-control border-color" 
+                    style="position:relative; opacity: 1;" 
+                    type="file" name="..." multiple max="7" />
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12">
+
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let url of listDomUrl">
+                      <img class="d-block select-image" [srcset]="[url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="removeFile(url)">{{ 'Remove' }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex col-md-12 " *ngIf="listOldFile.length>0">
+                  <hr style="width: 40%"> <span>Old Image</span> <hr style="width: 40%">
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let file of listOldFile">
+                      <img class="d-block select-image" [srcset]="[file.url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="onRemoveOldFile(file)">{{'Remove'}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<img src="http://localhost:8080/api/file/download/CAREF_MEDIA_USER_1_1611441751090.png">-->
+              <div class="d-flex justify-content-between mt-2">
+                <div class="d-flex justify-content-start">
+                  <a type="button" (click)="onBackClicked()" class="btn btn-round bg-secondary text-white">{{'Cancel post car'}}</a>
+                </div>
+                <div>
+                  <button type="submit" [disabled]="postCarForm.invalid" class="btn btn-round bg-info text-white">{{'Submit Post car'}}</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- First Step -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<app-create-report></app-create-report>-->

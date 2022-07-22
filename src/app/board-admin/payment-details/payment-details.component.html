@@ -1,0 +1,47 @@
+<div class="app flex-row align-items-center">
+    <div class="container-fluid">
+       <div class="row"> 
+         <div class="col-md-9 mx-auto">
+          <div class="card">
+             <div class="col-md-12">
+                <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'Payment Details'}}</u></i></h1>
+                <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'Payment Details'}}</h2>
+             </div>
+             <div class="car-body" *ngIf="payment">
+                 <div class="row">
+                     <div class="form-group col-md-6">
+                         <label><b>User-Email:</b></label> {{payment.email}}
+                     </div>
+                     <div class="form-group col-md-6">
+                         <label><b>Username:</b></label> {{payment.name}}
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="form-group col-md-4">
+                         <label><b>Product Info:</b></label> {{payment.productInfo}}
+                     </div>
+                     <div class="form-group col-md-4">
+                         <label><b>Product Prize:</b></label> {{payment.amount}}
+                     </div>
+                     <div class="form-group col-md-4">
+                         <label><b>Sell to:</b></label> {{payment.postByName}}
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="form-group col-md-4">
+                         <label><b>Product Status:</b></label> {{payment.status}}
+                     </div>
+                     <div class="form-group col-md-4">
+                         <label><b>Payment Date:</b></label> {{payment.paymentDate | date}}
+                     </div>
+                     <div class="form-group col-md-4">
+                         <label><b>UserNumber:</b></label> {{payment.phone}}
+                     </div>
+                 </div>
+             </div>
+             <p align="center"><button (click)="list()" class="btn btn-info">Back to Payment list</button> </p>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

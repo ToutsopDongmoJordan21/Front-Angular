@@ -1,0 +1,28 @@
+
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2><i><u>Garage List</u></i></h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Garage Name</th>
+              <th>Garage Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let garage of garage | async">
+              <td>{{garage.garageName}}</td>
+              <td>{{garage.garageAddress}}</td>
+              <td><button (click)="deleteGarage(garage.id)" class="btn btn-danger">Delete</button>
+                  <button (click)="updateGarage(garage.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                  <button (click)="createGarage()" class="btn btn-secondary" style="margin-left: 10px">Create</button>
+                  <button (click)="garageDetails(garage.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  

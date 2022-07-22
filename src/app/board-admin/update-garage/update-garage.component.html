@@ -1,0 +1,51 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="card">
+          <div class="col-md-12">
+            <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'UPDATE GARAGE'}}</u></i></h1>
+            <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'UPDATE GARAGE'}}</h2>
+          </div>
+          <div class="card-body">
+            <form class="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="name">{{'Garage Name'}}</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <input type="text" class="form-control" id="garageName" required [(ngModel)]="garage.garageName" name="garageName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="address">{{'Garage Addresse'}}</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <input type="text" class="form-control" id="garageName" required [(ngModel)]="garage.garageAddress" name="garageAddress">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <p align="center">
+                    <button type="submit" class="btn btn-info" style="margin-right: 20px;">Submit</button>
+                  </p>
+                </div>
+                <div class="form-group col-md-6">
+                  <button type="submit" class="btn btn-dark" click="goback()" >Go back</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

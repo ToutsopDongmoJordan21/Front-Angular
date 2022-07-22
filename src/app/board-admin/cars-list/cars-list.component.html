@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2><i><u>Car List</u></i></h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> Posted By </th>
+            <th>Car Title</th>
+            <th>Car Loan Price</th>
+            <th>Car Price</th>
+            <th>Car Seating</th>
+            <th>Car Brand</th>
+            <th>Car Year Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of car | async">
+            <td>{{car.postByName}}</td>
+            <td>{{car.carTitle}}</td>
+            <td>{{car.carLoanPrice}}</td>
+            <td>{{car.carPrice}}</td>
+            <td>{{car.carSeating}}</td>
+            <td>{{car.carBrand}}</td>
+            <td>{{car.carYearModel}}</td>
+            <td><button (click)="deleteCar(car.id)" class="btn btn-danger">Delete</button>
+                <button (click)="detailsCar(car.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

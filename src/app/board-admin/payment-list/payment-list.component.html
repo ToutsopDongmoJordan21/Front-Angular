@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2><i><u>Car List</u></i></h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Product Name</th>
+              <th>User Phone-number</th>
+              <th>Product Info</th>
+              <th>Amount</th>
+              <th>User name</th>
+              <th>Payment Status</th>
+         </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payment | async">
+                <td>{{payment.name}}</td>
+                <td>{{payment.phone}}</td>
+                <td>{{payment.productInfo}}</td>
+                <td>{{payment.amount}}</td>
+                <td>{{payment.postByName}}</td>
+                <td>{{payment.status}}</td>
+                <td><button (click)="deletePayment(payment.id)" class="btn btn-danger"> Delete </button> 
+                    <button (click)="detailsPayment(payment.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

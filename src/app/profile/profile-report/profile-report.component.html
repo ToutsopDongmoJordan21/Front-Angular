@@ -1,0 +1,33 @@
+<div class="app flex-row align-items-center">
+    <div class="container-fluid" *ngIf="reportList">
+       <div class="row" *ngFor="let report of reportList"> 
+         <div class="col-md-9 mx-auto">
+          <div class="card">
+             <div class="col-md-12">
+                <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block">{{'Report Details'}}</h1>
+                <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'Report Details'}}</h2>
+             </div>
+             <div class="car-body" *ngIf="report">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label><b>Report Contenue</b></label> {{report.reportContenue}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><b>Car Name</b></label> {{report.reportName}}
+                    </div>
+                 </div>
+                 <div class="row">
+                     <div class="form-group col-md-6">
+                         <label><b>PostedBy:</b></label> {{report.createdBy}}
+                     </div>
+                     <div class="form-group col-md-6">
+                         <label><b>Posted at:</b></label> {{report.createdDate | date}}
+                     </div>
+                 </div>
+            </div>
+            <p align="center"><button (click)="list()" class="btn btn-info">Back to report list</button> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

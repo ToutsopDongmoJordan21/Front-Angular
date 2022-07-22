@@ -1,0 +1,18 @@
+<h3>Update Report</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Report Id</label>
+      <input type="text" class="form-control" id="id" required [(ngModel)]="report.id" name="id" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Contenue report</label>
+      <input type="text-area" class="form-control" id="reportContenue" required [(ngModel)]="report.reportContenue" name="reportContenue">
+    </div>
+
+    <button type="submit" class="btn btn-info">Submit</button> &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-info" click="goback()" >Go back</button><br><br><br>
+  </form>
+
+</div>

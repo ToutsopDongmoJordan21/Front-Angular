@@ -1,0 +1,45 @@
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+     <div class="row"> 
+       <div class="col-md-9 mx-auto">
+        <div class="card">
+           <div class="col-md-12">
+              <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'User Details'}}</u></i></h1>
+              <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'User Details'}}</h2>
+           </div>
+           <div class="car-body" *ngIf="user">
+            <div class="row">
+              <div class="form-group col-md-1">
+                <label><b>Id: </b></label><i>&nbsp; {{user.id}} </i>
+              </div>
+              <div class="form-group col-md-11">
+                <label><b>Encrypted Passowrd: </b></label>&nbsp; <i>{{user.password }} </i>
+              </div>  
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label><b>Username: </b></label>&nbsp; <i>{{user.username}} </i>
+              </div>
+              <div class="form-group col-md-4">
+                <label><b>Address Email: </b></label>&nbsp; <i> {{user.email}} </i>
+              </div>
+              <div class="form-group col-md-4">
+                <label><b>Phone Number: </b></label>&nbsp; <i>{{user.phoneNumber}} </i>
+              </div> 
+            </div>
+            <p align="center"> <button (click)="list()" class="btn btn-info">Back to User List</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+  <p style="color: white">Please Wait. </p>  
+</ngx-spinner>
+
+

@@ -1,0 +1,53 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+  </ngx-spinner>
+  <div class="app flex-row align-items-center">
+    <div class="container-fluid">
+      <div class="row" >
+        <div class="col-md-9 mx-auto">
+          <div class="card">
+            <div class="col-md-12">
+              <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block"><i><u>{{'CREATE REPORT'}}</u></i></h1>
+              <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'CREATE REPORT'}}</h2>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="name">Car Name:</label>
+                            <input type="text-area" class="form-control"
+                                    id="reportName" required
+                                    [(ngModel)]="car.carTitle"
+                                    name="reporName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="contenue">Contenue report</label>
+                            <input type="text-area" class="form-control"
+                                    id="reportContenue" required
+                                    [(ngModel)]="report.reportContenue"
+                                    name="reportContenue" placeholder="Enter the contenue">          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <p align="center">
+                                <button type="submit" 
+                                class="btn btn-round bg-dark text-white" (click)="list()">Return</button>           
+                            </p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>*
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        

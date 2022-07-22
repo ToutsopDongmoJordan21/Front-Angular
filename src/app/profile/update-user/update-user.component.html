@@ -1,0 +1,99 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="card">
+          <div class="col-md-12">
+            <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block">{{'UPDATE USER'}}</h1>
+            <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'UPDATE USER'}}</h2>
+          </div>
+          <div class="card-body">
+            <form class="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="id">{{'Id'}}</label>
+                  <input type="text" class="form-control" 
+                  id="id" required 
+                  [(ngModel)]="user.id" 
+                  name="Id" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="username">{{'Username'}}</label>
+                  <input type="text" class="form-control" 
+                  id="username" required 
+                  [(ngModel)]="user.username" 
+                  name="username">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="email">{{'Email Address'}}</label>
+                  <input type="text" class="form-control" id="email" required [(ngModel)]="user.email" name="email">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="phoneNumber">{{'Phone Number'}}</label>
+                    <input type="text" class="form-control" id="phoneNumber" required [(ngModel)]="user.phoneNumber" name="phoneNumber">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="password">{{'Password'}}</label>
+                  <show-hide-password btnStyle="secondary" [btnOutline]="false">
+                    <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password" disabled>
+                  </show-hide-password>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mt-2">
+                    <label for="uploadFile">{{'User images'}}</label>
+                    <input id="uploadFile" 
+                    [accept]="[acceptImageInputFile]"
+                    (change)="onFileSelect($event)"
+                    class="form-control border-color"
+                    style="position: relative; opacity: 1;"
+                    type="file" name="..." multiple max="5" />
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let url of listDomUrl">
+                      <img class="d-block select-image" [srcset]="[url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="removeFile(url)">{{'Remove'}}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex col-md-12" *ngIf="listOldFile.length>0">
+                  <hr style="width: 40%"> <span>Old Image</span> <hr style="width: 40%">
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let file of listOldFile">
+                      <img class="d-block select-image" [srcset]="[file.url]" alt="job-img">
+                      <a class="btn btn-round btn-danger text-white btn-sm mt-1" class="onRemoveOldFile(file)">{{'Remove'}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <p align="center"><button type="submit" class="btn btn-info">Submit</button></p>
+                </div>
+                <div class="form-group col-md-6">
+                  <button type="submit" class="btn btn-dark" (click)="change()">Back to profile</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+        <p style="color: white">Please Wait. </p>  
+    </ngx-spinner>

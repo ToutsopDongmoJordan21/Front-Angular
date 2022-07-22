@@ -1,0 +1,105 @@
+<div class="app flex-row align-items-center">
+    <div class="container-fluid" *ngIf="carList">
+       <div class="row" *ngFor="let car of carList"> 
+         <div class="col-md-9 mx-auto">
+          <div class="card">
+             <div class="col-md-12">
+                <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block">{{'Car Details'}}</h1>
+                <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'Car Details'}}</h2>
+             </div>
+             <div class="car-body">
+                <div class="row">
+                        <div class="form-group col-md-4">
+                              <label><b>Car Title: </b></label> {{car.carTitle}}
+                        </div>
+                        <div class="form-group col-md-4">
+                              <label><b>Car Brand: </b></label> {{car.carBrand}}
+                        </div>
+                        <div class="form-group col-md-4">
+                              <label><b>Car YearModel: </b></label> {{car.carYearModel}}
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="form-group col-md-4">
+                              <label><b>Car Price: </b></label> {{car.carPrice}}
+                        </div>
+                        <div class="form-group col-md-4">
+                              <label><b>Car Loan Price: </b></label> {{car.carLoanPrice}}
+                        </div>
+                        <div class="form-group col-md-4">
+                              <label><b>Car Fuel: </b></label> {{car.carFuel}}
+                        </div>
+                </div>
+                <div class="row">
+                   <div class="form-group col-md-6">
+                         <label><b>Accessoires Name: </b></label><br>
+                         <ul class="list-group">
+                              <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of car.accessorsName">
+                                    {{item}}<br> 
+                                      <span class="badge badge-primary badge-pill">1</span>
+                              </li>
+                         </ul>
+                   </div>
+                   <div class="form-group col-md-6">
+                         <label align="center"><b> Other Infos </b></label>
+                         <ul class="list-group">
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <i>Car Seating</i>  
+                                      <span class="badge badge-primary badge-pill">{{car.carSeating}}</span>
+                              </li>
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <i>Posted By: </i> <i>{{car.postByName}} </i>
+                              </li>
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <i>Added At: </i> {{car.carAddedDate | date}}
+                              </li>
+                         </ul>
+                   </div>
+                </div>
+
+                <div class="row">
+                   <div class="form-group col-md-12">
+                         <label><b>Car Overview: </b></label> {{car.carOverview}}
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="form-group col-md-12">
+                     <label><b>Car Images: </b></label> 
+                     <div class="row offset-4">
+                         <div style="max-height: 300px;">
+                               <ngb-carousel>
+                                  <ng-template ngbSlide *ngFor="let image of car.carImages">
+                                     <img [src]="image.url" style="width: 500px; height: 300px; float: center;">
+                                     <div class="carousel-caption">
+                                           <h3 style="color: yellox;">Image Car</h3>
+                                     </div>
+                                  </ng-template>     
+                               </ngb-carousel>         
+                         </div>
+                     </div>
+                   </div>
+               </div>
+             </div>
+             <div class="row">
+                   <div class="form-group col-md-4">
+                        <p align="center"><button (click)="updateCar(car.id)" class="btn btn-info">Update</button> </p>
+                   </div>
+                   <div class="form-group col-md-4">
+                        <p align="center"><button (click)="createReport(car.id)" class="btn btn-info">Create Report</button> </p>
+                   </div>
+                   <div class="form-group col-md-4">
+                         <button (click)="list()" class="btn btn-dark">Back to car List</button><br><br>
+                  </div>
+             </div> 
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+   <p style="color: white">Please Wait. </p>  
+ </ngx-spinner>
+ 
+ 
+ 

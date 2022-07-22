@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2><i><u>Car List</u></i></h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Price</th>
+              <th>Subscription Type</th>
+              <th>Date debut</th>
+              <th>Date fin</th>
+              <th>Subscribe by</th>
+              <th>Subscriber Phone-number</th>
+         </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let subscription of subscription | async">
+                <td>{{subscription.price}}</td>
+                <td>{{subscription.subscriptionType}}</td>
+                <td>{{subscription.dateDebut | date}}</td>
+                <td>{{subscription.dateFin | date}}</td>
+                <td *ngIf="subscription.user">{{subscription.user.username}}</td>
+                <td *ngIf="subscription.user">{{subscription.user.phoneNumber}}</td>
+                <td><button (click)="deleteSubscription(subscription.id)" class="btn btn-danger"> Delete </button> 
+                    <button (click)="detailsSubscription(subscription.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

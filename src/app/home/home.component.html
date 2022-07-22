@@ -1,0 +1,95 @@
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="row col-md-12 d-flex justify-content-around" *ngIf="carList">
+      <div class="row" *ngFor="let car of carList | async"> 
+            <div class="col-md-6"> 
+                  <a (click)="carDetails(car.id)">
+                        <div class="card" style="width: 600px; height: 750px;">
+                              <div class="row">
+                                    <div class="form-group col-md-12" style="float: center;">
+                                          <h4><i>{{car.carTitle}}, {{car.carBrand}}</i></h4>
+                                    </div>
+                              </div>
+                              <div class="row">
+                                    <div class="form-group col-md-12">
+                                    <ngb-carousel>
+                                          <ng-template ngbSlide *ngFor="let image of car.carImages">
+                                                <img [src]="image.url" style="width: 550px; height: 330px; float: center;">
+                                                <div class="carousel-caption">
+                                                </div>
+                                          </ng-template>     
+                                    </ngb-carousel>
+                                    </div>
+                              </div>
+                              <div class="row">
+                                    <div class="form-group col-md-6">
+                                          <div class="row">
+                                                <div class="form-group col-md-6">
+                                                      <i class="far fa-calendar-alt"> {{car.carYearModel}}</i>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                      <i class="fas fa-euro-sign"> {{car.carLoanPrice}}/Month</i>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <div class="form-group col-md-5">
+                                                      <i class="fas fa-euro-sign"> {{car.carPrice}}</i>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                      <i class="fas fa-gas-pump"> {{car.carFuel}}</i>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-2">
+                                                      <i class="fas fa-chair"> {{car.carSeating}}</i>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                          <div class="form-group col-md-12">
+                                                <i class="fas fa-sms"> {{car.carOverview}}</i>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <div class="row">
+                                                <div class="form-group col-md-12">
+                                                <ul class="list-group">
+                                                      <p style="float: center;"><b> Accessors List</b></p> 
+                                                      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of car.accessorsName">
+                                                            {{item}}<br> 
+                                                                  <span class="badge badge-primary badge-pill">1</span>
+                                                      </li>
+                                                      </ul>
+                                                </div>
+                                          </div>                         
+                                    </div>
+                              </div>
+                              <div class="row">
+                                    <div class="form-group col-md-8" align="center">
+                                          <button (click)="pay(car.id)" [disabled]=!isLoggedIn class="btn btn-info">Sales</button>
+                                    </div>
+                                    <div class="form-group col-md-4" align="left">
+                                          <button (click)="loan(car.id)" [disabled]=!isLoggedIn class="btn btn-info">Loan</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+            </div>
+      </div>
+</div>
+<!-- <div class="col-md-3" *ngFor="let garage of garages | async">
+  <div class="container-fluid">
+
+    <br><br><br>
+    <img class="card-img-top" src="../../assets/images/3.jpeg" alt="Card image">
+    <label class="container">
+      <h4 class="row">{{garage.garageName}}</h4>
+      <span class="row">{{garage.garageAddress}}</span>
+      <button (click)="garageDetails(garage.id)" class="btn btn-info">Details</button>
+    </label>
+    <br>
+  </div>
+</div> -->
+
+
