@@ -38,6 +38,7 @@ import { PaymentDetailsComponent } from './board-admin/payment-details/payment-d
 import { ProfilePaymentComponent } from './profile/profile-payment/profile-payment.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { ProfileReportComponent } from './profile/profile-report/profile-report.component';
+import { BoardFichiersComponent } from './board-fichiers/board-fichiers.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'car', component: BoardCarComponent },
+  { path: 'fichier', component: BoardFichiersComponent},
   { path: 'users', component: UserListComponent },
   { path: 'garage', component: GarageListComponent },
   { path: 'report', component: ReportListComponent },

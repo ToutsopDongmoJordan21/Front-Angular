@@ -1,0 +1,92 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
+<div class="app flex-row align-items-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="card">
+          <div class="col-md-12">
+            <h1 class="text-center text-black-50 font-weight-bold d-none d-md-block">{{'SAVE A FILE'}}</h1>
+            <h2 class="text-center text-black-50 font-weight-bold d-block d-md-none">{{'SAVE A FILE'}}</h2>
+          </div>
+          <!-- First Step -->
+          <div class="card-body">
+            <form class="form" [formGroup]="postFileForm" (ngSubmit)="onSubmit()" >
+                <div class="row">
+                    <div class="form-group  col-md-6">
+                    <label for="title">{{'File title'}}</label>
+                    <input type="text" class="form-control" 
+                    formControlName="fichierTitle" 
+                    id="title" 
+                    aria-describedby="emailHelp" 
+                    placeholder="Title of the file...">
+                    <div *ngIf="fichierTitle.invalid && (fichierTitle.dirty || fichierTitle.touched)" class="text-danger text_bold mt-2">
+                        <div *ngIf="fichierTitle.errors.required">
+                        {{'This information is required'}}
+                        </div>
+                        <div *ngIf="fichierTitle.errors.maxlength">
+                        {{'The car title max length is 50 characters'}}
+                        </div>
+                        <div *ngIf="fichierTitle.errors.minlength">
+                        {{'The car title min length is 5 characters'}}
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label for="fichierAddedDate">{{'Added Date'}}</label>
+                    <input type="date" class="form-control" formControlName="fichierAddedDate" 
+                                id="fichierAddedDate" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group mt-2">
+                        <label for="uploardFile">{{ 'File Upload' }}</label>
+                        <input id="uploardFile" formControlName="files" 
+                        [accept]="[acceptImageInputFile]" 
+                        (change)="onFileSelect($event)" 
+                        class="form-control border-color" 
+                        style="position:relative; opacity: 1;" 
+                        type="file" name="..." multiple max="7" />
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12">
+
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let url of listDomUrl">
+                        <img class="d-block select-image" [srcset]="[url]" alt="job-img">
+                        <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="removeFile(url)">{{ 'Remove' }}</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex col-md-12 " *ngIf="listOldFile.length>0">
+                    <hr style="width: 40%"> <span>Old Image</span> <hr style="width: 40%">
+                    </div>
+
+                    <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let file of listOldFile">
+                        <img class="d-block select-image" [srcset]="[file.url]" alt="job-img">
+                        <a class="btn btn-round btn-danger text-white btn-sm mt-1" (click)="onRemoveOldFile(file)">{{'Remove'}}</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <div class="d-flex justify-content-start">
+                        <a type="button" (click)="onBackClicked()" class="btn btn-round bg-secondary text-white">{{'Cancel post car'}}</a>
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="postFileForm.invalid" class="btn btn-round bg-info text-white">{{'Submit Post car'}}</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+         <!-- First Step -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

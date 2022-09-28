@@ -136,7 +136,8 @@ export class BoardCarComponent implements OnInit {
       entity: EntityFileTypeEnum.CAR,
       fileType: FileTypeEnum.PHOTO,
       userId: 0,
-      garageId: 0
+      garageId: 0,
+      fichierId: 0
     };
     this.carService.postRequest('/auth/cars', car).then((value: any) => {
       console.log(value);

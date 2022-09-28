@@ -38,6 +38,8 @@ export class FileServiceService {
     formData.append('garageId', dto.garageId);
     // @ts-ignore
     formData.append('userId', dto.userId);
+    // @ts-ignore
+    formData.append('fichierId', dto.fichierId);
     formData.append('entity', dto.entity.toString());
 
     return this.$http.post(environment.baseUrl + '/file/upload', formData, {observe: 'response', responseType: 'json'}).toPromise()

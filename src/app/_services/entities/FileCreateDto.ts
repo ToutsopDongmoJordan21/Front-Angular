@@ -9,4 +9,5 @@ export class FileCreateDto {
   carId?: number;
   garageId?: number;
   userId?: number;
+  fichierId?: number;
 }

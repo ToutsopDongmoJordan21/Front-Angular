@@ -55,6 +55,7 @@ import { PaymentDetailsComponent } from './board-admin/payment-details/payment-d
 import { ProfilePaymentComponent } from './profile/profile-payment/profile-payment.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { ProfileReportComponent } from './profile/profile-report/profile-report.component';
+import { BoardFichiersComponent } from './board-fichiers/board-fichiers.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { ProfileReportComponent } from './profile/profile-report/profile-report.
     PaymentDetailsComponent,
     ProfilePaymentComponent,
     PaymentsComponent,
-    ProfileReportComponent
+    ProfileReportComponent,
+    BoardFichiersComponent
   ],
   imports: [
     BrowserModule,
